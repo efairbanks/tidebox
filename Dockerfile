@@ -6,7 +6,7 @@ MAINTAINER Buttetsu Batou <doubledense@gmail.com>
 
 RUN dnf groupinstall -y "C Development Tools and Libraries"
 RUN dnf install -y git zsh wget man sudo
-RUN dnf install -y libsndfile-devel libsamplerate-devel liblo-devel jack-audio-connection-kit-devel jack-audio-connection-kit-example-clients alsa-lib-devel xz htop grep procps-ng yasm screen supervisor openssh-server
+RUN dnf install -y libsndfile-devel libsamplerate-devel liblo-devel jack-audio-connection-kit-devel jack-audio-connection-kit-example-clients alsa-lib-devel xz htop grep procps-ng yasm screen supervisor openssh-server zlib-devel
 RUN dnf install -y cabal-install ghc-Cabal-devel
 
 # Install editor
@@ -73,6 +73,12 @@ RUN ln -s /work /home/tidal/work
 # Install Tidal
 RUN cabal update
 RUN cabal install tidal
+
+# Alternatively, install Tidal with stack instead of cabal
+#RUN dnf copr enable petersen/stack
+#RUN stack upgrade
+#RUN stack install tidal
+
 
 # Install Oh-My-Zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
