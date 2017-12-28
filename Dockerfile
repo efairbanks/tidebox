@@ -31,7 +31,7 @@ RUN rm -fr lame
 WORKDIR /repos
 RUN git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
 WORKDIR ffmpeg
-RUN ./configure --enable-indev=jack --enable-libmp3lame --enable-nonfree --prefix=/usr
+RUN ./configure --enable-indev=jack --enable-libjack --enable-libmp3lame --enable-nonfree --prefix=/usr
 RUN make install
 WORKDIR /repos
 RUN rm -fr ffmpeg
